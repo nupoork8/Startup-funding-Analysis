@@ -1,10 +1,9 @@
-```markdown
 # Global Unicorn Companies Analysis 🦄
-
 
 ## 🎯 Problem Statement
 
 Investors, entrepreneurs, and policymakers struggle to understand what drives billion-dollar startup success. Key questions remain unanswered:
+
 - Which industries attract the most capital and why?
 - How long does it realistically take to build a unicorn?
 - Where should entrepreneurs build to maximize success probability?
@@ -18,6 +17,7 @@ Investors, entrepreneurs, and policymakers struggle to understand what drives bi
 ## 📊 Project Overview
 
 This project analyzes **1,074 unicorn companies** (startups valued at $1B+) from 2007-2022 to uncover:
+
 - **Funding patterns** across industries and geographies
 - **Time-to-unicorn** trends and acceleration factors
 - **Capital efficiency** metrics (valuation per dollar raised)
@@ -26,13 +26,46 @@ This project analyzes **1,074 unicorn companies** (startups valued at $1B+) from
 
 **Objective**: Provide actionable insights for investors (capital allocation), entrepreneurs (strategic planning), and policymakers (ecosystem building).
 
+**Dataset Source**: [Kaggle - Unicorn Companies Dataset](https://www.kaggle.com/datasets/ramjasmaurya/unicorn-companies-dataset)
+
 ---
 
-## 📁 Dataset
+### Skills Demonstrated
+- **SQL**: Complex queries, CTEs, window functions, data type conversion
+- **Python**: Pandas data manipulation, feature engineering, handling missing data
+- **Tableau**: Dashboard design, KPI visualization, geographic heat mapping
+- **Business Analysis**: Problem framing, insight extraction, actionable recommendations
+  
+---
 
-**Source**: [Kaggle - Unicorn Companies Dataset](https://www.kaggle.com/datasets/ramjasmaurya/unicorn-companies-dataset)
+## 🔍 Key Findings
 
-## 🔍 Exploratory Data Analysis (EDA)
+### Industry Insights
+- **Fintech** leads with 223 unicorns (21% of total) and $256B in funding
+- **Internet Software** follows with 205 companies
+- **AI** shows rapid growth: 84 companies, mostly post-2018
+- **E-commerce** has 111 companies but shows saturation signs
+
+### Geographic Patterns
+- **US dominance**: 51% global market share (550+ unicorns)
+- **City clustering**: San Francisco (180), Beijing (65), NYC (55) are top hubs
+- **Emerging markets**: India (95) and Southeast Asia growing rapidly
+- **Regional specialization**: Asia → AI, Europe → Fintech, US → Diverse
+
+### Time & Capital Efficiency
+- **Average time to unicorn**: 7 years overall, declining to 5 years for recent cohorts
+- **Capital efficiency matters**: Top performers achieve 10-70x efficiency ratios (Canva: 70x, SHEIN: 50x, Stripe: 47.5x)
+- **Funding average**: $557M with wide variance ($50M-$14B range)
+- **2021 acceleration**: 519 unicorns created in single year (48% of all-time total)
+
+### Valuation Distribution
+- **Pyramid structure**: 70% stay at $1-9B valuation tier
+- **Decacorns**: Only 5% reach $10B+ valuations
+- **Hectocorns**: Just 3 companies exceed $100B (Bytedance, SpaceX, SHEIN)
+
+---
+
+## 📈 Analysis Deep Dive
 
 ### 1. Industry Distribution & Funding
 
@@ -51,27 +84,17 @@ GROUP BY Industry
 ORDER BY Total_Funding_Millions DESC;
 ```
 
-**Findings**:
-- **Fintech** leads with 223 companies (21% of total) and $256B in funding
-- **Internet Software** follows with 205 companies
-- **E-commerce** has 111 companies but lower average funding
-- **AI** shows rapid growth: 84 companies, mostly post-2018
+**Key Findings**:
+- Fintech attracts most capital with 21% market share
+- Internet Software has second-highest company count
+- AI sector showing fastest growth trajectory post-2018
 
 ---
 
 ### 2. Geographic Analysis
 
-**SQL Query**:
-```sql
-SELECT TOP 10
-    City, Country,
-    COUNT(*) AS Companies
-FROM Unicorn_Companies
-GROUP BY City, Country
-ORDER BY Companies DESC;
-```
+**Top 10 Cities by Unicorn Count**:
 
-**Findings**:
 | City | Country | Unicorns |
 |------|---------|----------|
 | San Francisco | USA | 180 |
@@ -107,10 +130,11 @@ HAVING COUNT(*) >= 5
 ORDER BY Total_Funding DESC;
 ```
 
-- **USA**: 550+ unicorns (51% global share)
-- **China**: 200+ unicorns (19% global share)
-- **India**: 95 unicorns (9% global share)
-- **UK**: 45 unicorns (4% global share)
+**Geographic Distribution**:
+- USA: 550+ unicorns (51%)
+- China: 200+ unicorns (19%)
+- India: 95 unicorns (9%)
+- UK: 45 unicorns (4%)
 
 ---
 
@@ -133,11 +157,11 @@ GROUP BY YEAR([Date_Joined])
 ORDER BY Year_Unicorn_Reached;
 ```
 
-**Findings**:
+**Speed Categories**:
 - **Overall Average**: 7.0 years from founding to $1B valuation
 - **2015 Cohort**: 8.2 years average
-- **2021 Cohort**: 5.1 years average (40% faster!)
-- **Fastest Ever**: Some companies reached unicorn status in <2 years
+- **2021 Cohort**: 5.1 years average (40% faster)
+- **Fastest Ever**: Some companies achieved status in <2 years
 - **Trend**: Clear acceleration in recent years
 
 ---
@@ -169,18 +193,19 @@ WHERE Efficiency_Ratio > 5
 ORDER BY Efficiency_Ratio DESC;
 ```
 
-**Findings**:
+**Top Performers**:
+
 | Company | Valuation | Funding | Efficiency Ratio |
 |---------|-----------|---------|------------------|
 | Canva | $40B | $572M | 70x |
 | SHEIN | $100B | $2B | 50x |
 | Stripe | $95B | $2B | 47.5x |
 
-**Insight**: Top performers achieve 10-70x efficiency ratios—capital efficiency beats capital raised.
+**Insight**: Capital efficiency beats capital raised—top performers achieve 10-70x ratios.
 
 ---
 
-### 5. Valuation Distribution
+### 5. Valuation Tier Distribution
 
 **SQL Query**:
 ```sql
@@ -210,15 +235,6 @@ GROUP BY Tier, Tier_Rank
 ORDER BY Tier_Rank ASC;
 ```
 
-**Findings**:
-| Tier | Count | Percentage |
-|------|-------|------------|
-| Unicorn ($1-9B) | 750 | 70% |
-| Decacorn ($10-99B) | 52 | 5% |
-| Hectocorn ($100B+) | 3 | 0.3% |
-
-**Insight**: Classic pyramid structure—most companies stay at entry level.
-
 ---
 
 ### 6. Temporal Trends
@@ -233,12 +249,12 @@ GROUP BY YEAR([Date_Joined])
 ORDER BY Year;
 ```
 
-**Findings**:
+**Growth Timeline**:
 - **2007-2015**: Slow growth (1-35 unicorns/year)
 - **2016-2019**: Acceleration phase (44-108 unicorns/year)
 - **2020**: 108 new unicorns
-- **2021**: **519 new unicorns** (48% of all-time total!) 🚀
-- **2022**: 116 new unicorns (correction/normalization)
+- **2021**: 519 new unicorns (48% of all-time total) 🚀
+- **2022**: 116 new unicorns (market correction/normalization)
 
 **Insight**: 2021 represented unprecedented unicorn creation driven by pandemic digital transformation and loose monetary policy.
 
@@ -257,127 +273,76 @@ GROUP BY Continent, Industry
 ORDER BY Continent, Companies DESC;
 ```
 
-**Findings**:
-- **North America**: Diverse (Fintech, Internet Software, E-commerce)
-- **Asia**: AI (65 companies), E-commerce (55 companies)
-- **Europe**: Fintech (48 companies), Software (32 companies)
+**Regional Strengths**:
+- **North America**: Diverse portfolio (Fintech, Internet Software, E-commerce)
+- **Asia**: AI specialization (65 companies), E-commerce (55 companies)
+- **Europe**: Fintech leadership (48 companies), Software (32 companies)
 - **South America**: E-commerce & Fintech focus (limited diversity)
 
-**Insight**: Regional specialization exists—countries should lean into strengths rather than chase every sector.
+**Insight**: Regional specialization exists—countries benefit from leaning into existing strengths.
 
 ---
 
-## 📈 Data Visualization
+## 📊 Interactive Dashboards
 
 ### Dashboard 1: Unicorn Overview
-![Overview Dashboard](Screenshot_2026-02-10_113901.png)
+![Overview Dashboard](<img width="1250" height="969" alt="Screenshot 2026-02-10 113901" src="https://github.com/user-attachments/assets/f9a91032-06f1-4f87-9886-84b8a8151845" />
+)
 
-**Purpose**: Executive summary of global unicorn landscape
-
-**Visualizations**:
-1. **KPI Cards**: Total companies (1,073), Avg valuation ($3.4B), Avg funding ($557M), Avg years (7.0)
-2. **Line Chart**: Unicorn creation trend 2007-2022 showing exponential growth
-3. **Horizontal Bar Chart**: Company count by industry
-4. **Pie Chart**: Valuation tier distribution (Entry/Mid/Super/Mega)
+**Components**:
+- **KPI Cards**: Total companies (1,073), Avg valuation ($3.4B), Avg funding ($557M), Avg years (7.0)
+- **Line Chart**: Unicorn creation trend 2007-2022
+- **Bar Chart**: Company count by industry
+- **Pie Chart**: Valuation tier distribution
 
 **Key Insights**:
-- 2021 boom created 519 unicorns (48% of historical total)
-- Fintech dominates with 223 companies (21% market share)
-- 70% of unicorns remain at $1-2B valuation (entry tier)
+- 2021 boom created 48% of historical unicorns
+- Fintech dominates with 21% market share
+- 70% of unicorns remain at entry tier ($1-2B)
 
 ---
 
-### Dashboard 2: Funding Deep Dive
-![Funding Dashboard](Screenshot_2026-02-13_205908.png)
+### Dashboard 2: Funding Analysis
+![Funding Dashboard](<img width="1306" height="987" alt="Screenshot 2026-02-13 205908" src="https://github.com/user-attachments/assets/15a5f386-ee11-47af-a1a8-caa92415daf1" />
+)
 
-**Purpose**: Analyze capital efficiency and funding-valuation relationships
-
-**Visualizations**:
-1. **Scatter Plot**: Funding (x-axis) vs Valuation (y-axis) with company labels
-2. **Histogram**: Distribution of efficiency ratios
-3. **Bar Chart**: Average time to unicorn by industry
+**Components**:
+- **Scatter Plot**: Funding vs Valuation with company labels
+- **Histogram**: Distribution of efficiency ratios
+- **Bar Chart**: Average time to unicorn by industry
 
 **Key Insights**:
-- Clear efficiency clusters: high performers (Stripe, Canva) vs capital-intensive (Bytedance)
-- Fintech companies reach unicorn status in ~1,500 days (fastest)
+- Clear efficiency clusters: high performers vs capital-intensive
+- Fintech reaches unicorn status fastest (~1,500 days)
 - Hardware companies take longest (3,000+ days average)
 
 ---
 
 ### Dashboard 3: Geographic Distribution
-![Geographic Dashboard](Screenshot_2026-02-13_194629.png)
+![Geographic Dashboard](<img width="1184" height="961" alt="Screenshot 2026-02-13 194618" src="https://github.com/user-attachments/assets/ba09de39-726c-4636-941f-dc4c18bbe565" />
+)
 
-**Purpose**: Map global startup ecosystems and regional patterns
-
-**Visualizations**:
-1. **World Heat Map**: Geographic concentration visualization
-2. **Bar Chart**: Top 15 countries by unicorn count
-3. **Bubble Chart**: City-level clusters with efficiency ratios
+**Components**:
+- **World Heat Map**: Geographic concentration visualization
+- **Bar Chart**: Top 15 countries by unicorn count
+- **Bubble Chart**: City-level clusters with efficiency ratios
 
 **Key Insights**:
-- US dominance: 550+ unicorns (51%) concentrated in SF, NYC, LA
-- China specialization: 200+ unicorns focused on AI and E-commerce
-- Emerging hubs: India (95), UK (45), Germany (25) showing growth
+- US concentration in SF, NYC, LA
+- China's AI and E-commerce specialization
+- Emerging hubs: India, UK, Germany
+
 
 ---
 
-## 🎯 Key Findings
+## 🚀 Future Enhancements
 
-### 1. Industry Insights
-✅ **Fintech leads** with 223 unicorns and $256B total funding  
-✅ **Internet Software** second with 205 companies  
-✅ **AI growth** accelerating: 84 companies, mostly post-2018  
-✅ **E-commerce saturation**: 111 companies but declining new entrants  
-
-### 2. Geographic Patterns
-✅ **US dominance**: 51% global market share (550+ unicorns)  
-✅ **City clustering**: SF (180), Beijing (65), NYC (55) are top hubs  
-✅ **Emerging markets**: India (95) and Southeast Asia growing rapidly  
-✅ **Regional specialization**: Asia→AI, Europe→Fintech, US→Diverse  
-
-### 3. Time & Efficiency
-✅ **Average time to unicorn**: 7 years (declining to 5 years for recent cohorts)  
-✅ **Capital efficiency matters**: Top 10% achieve 10-70x efficiency ratios  
-✅ **Funding average**: $557M but wide variance ($50M-$14B range)  
-✅ **2021 acceleration**: 519 unicorns created in single year (48% of total)  
-
-### 4. Valuation Distribution
-✅ **Pyramid structure**: 70% stay at $1-2B, only 5% reach $10B+  
-✅ **Mega-unicorns rare**: Only 3 companies exceed $100B (Bytedance, SpaceX, SHEIN)  
-✅ **Industry variance**: Fintech higher average valuations than Hardware  
-
----
-
-## 💼 Business Recommendations
-
-### For Investors 💰
-1. **Focus on Fintech/AI sectors** with proven unicorn generation rates (21% of market)
-2. **Prioritize capital efficiency** over capital raised—seek teams with >10x efficiency ratios
-3. **Diversify geographically** beyond saturated US market to India, Southeast Asia (95+ unicorns)
-4. **Early-stage advantage**: Companies reaching unicorn in <5 years show stronger fundamentals
-
-### For Entrepreneurs 🚀
-1. **Location strategy matters**: Build in SF (tech diversity), Beijing (AI), London (fintech)
-2. **Plan 5-7 year journey** but aim for 3-4 years (achievable with strong execution)
-3. **Capital efficiency wins**: Stripe ($95B on $2B), Canva ($40B on $572M) prove lean works
-4. **Industry selection critical**: Fintech/Software faster paths than Hardware/Healthcare
-
-### For Policymakers 🏛️
-1. **Replicate ecosystem effects**: US advantage = capital access + talent + exits
-2. **Support industry clustering**: Geographic specialization works (SF→Tech, Shenzhen→Hardware)
-3. **VC fund catalysts**: Government-backed matching funds accelerate ecosystem growth
-4. **Regulatory clarity**: Clear fintech/crypto regulations attract capital (see UK, Singapore)
-
----
-
-## 🚀 Future Scope
-
-### Planned Enhancements
-1. **Predictive Modeling**: Build ML model to predict unicorn probability based on early metrics
-2. **Investor Network Analysis**: Map co-investment patterns and VC syndication networks
-3. **Survival Analysis**: Track unicorn sustainability—how many maintain $1B+ valuations?
-4. **Exit Analysis**: Compare IPO vs M&A outcomes for unicorns
-5. **Real-time Dashboard**: Automate data pipeline to track new unicorn creation
+### Planned Analysis
+- **Predictive Modeling**: Build ML model to predict unicorn probability from early-stage metrics
+- **Network Analysis**: Map co-investment patterns and VC syndication networks
+- **Survival Analysis**: Track unicorn sustainability and valuation maintenance
+- **Exit Analysis**: Compare IPO vs M&A outcomes for unicorns
+- **Real-time Dashboard**: Automate data pipeline for live unicorn tracking
 
 ### Additional Data Sources
 - Crunchbase API for real-time funding updates
@@ -391,7 +356,7 @@ ORDER BY Continent, Companies DESC;
 
 | Category | Tools |
 |----------|-------|
-| **Database** | SQL Server |
+| **Database** | SQL Server Managemnt Studio |
 | **Data Cleaning** | Python (Pandas, NumPy) |
 | **Analysis** | SQL, Jupyter Notebook |
 | **Visualization** | Tableau Public |
@@ -426,41 +391,33 @@ ORDER BY Continent, Companies DESC;
 
 ---
 
-## 📝 Conclusion
+## 📝 Project Outcomes
 
-This analysis reveals clear patterns in the billion-dollar startup landscape:
+### Deliverables
+- ✅ Cleaned and analyzed 1,073 unicorn companies
+- ✅ Identified 8 key industry categories with funding patterns
+- ✅ Mapped 48 countries and 200+ cities in global ecosystem
+- ✅ Created 8 SQL queries answering critical business questions
+- ✅ Built 3 interactive Tableau dashboards for stakeholder communication
+
+---
+
+## 🎯 Conclusion
+
+This analysis reveals five critical patterns in the billion-dollar startup landscape:
 
 1. **Geography matters**: US ecosystem advantages (capital, talent, exits) drive 51% market share
 2. **Industry selection critical**: Fintech/AI show fastest paths to unicorn status
 3. **Capital efficiency > capital raised**: Top performers achieve 10-70x returns per dollar
 4. **Time accelerating**: Recent cohorts reach $1B in 5 years vs historical 7-year average
-5. **2021 anomaly**: Pandemic + loose monetary policy created unprecedented unicorn boom (519 companies)
-
-**The path to unicorn status is becoming faster but more competitive**—success requires strategic location selection, industry focus, and capital-efficient execution.
-
-### Project Outcomes
-- ✅ Cleaned and analyzed 1,073 unicorn companies
-- ✅ Identified 8 key industry categories with funding patterns
-- ✅ Mapped 48 countries and 200+ cities in unicorn ecosystem
-- ✅ Created 8 SQL queries answering critical business questions
-- ✅ Built 3 interactive Tableau dashboards for stakeholder communication
-
-### Skills Demonstrated
-- **SQL**: Complex queries, CTEs, window functions, data type conversion
-- **Python**: Pandas data manipulation, feature engineering, handling missing data
-- **Tableau**: Dashboard design, KPI visualization, geographic heat mapping
-- **Business Analysis**: Problem framing, insight extraction, actionable recommendations
-- **Communication**: Translating technical analysis into executive insights
+5. **2021 anomaly**: Pandemic + loose monetary policy created unprecedented boom (519 companies)
 
 ---
 
 ## 📞 Connect
 
 **[Your Name]**  
-📧 Email: [your.email@example.com](mailto:your.email@example.com)  
-💼 LinkedIn: [linkedin.com/in/yourprofile](https://linkedin.com/in/yourprofile)  
-🌐 Portfolio: [yourportfolio.com](https://yourportfolio.com)  
-💻 GitHub: [github.com/yourusername](https://github.com/yourusername)
+📧 Email: [your.email@example.com](mailto:knupoor08@gmail.com)  
+💻 GitHub: [github.com/yourusername](https://github.com/nupoork8)
 
 ---
-
