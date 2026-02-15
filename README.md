@@ -93,7 +93,7 @@ ORDER BY Total_Funding_Millions DESC;
 
 ### 2. Geographic Analysis
 
-**Top 10 Cities by Unicorn Count**:
+**Top 5 Country by Unicorn Count**:
 
 | City | Country | Unicorns |
 |------|---------|----------|
@@ -286,8 +286,7 @@ ORDER BY Continent, Companies DESC;
 ## 📊 Interactive Dashboards
 
 ### Dashboard 1: Unicorn Overview
-![Overview Dashboard](<img width="1250" height="969" alt="Screenshot 2026-02-10 113901" src="https://github.com/user-attachments/assets/f9a91032-06f1-4f87-9886-84b8a8151845" />
-)
+<img width="1250" height="969" alt="Screenshot 2026-02-10 113901" src="https://github.com/user-attachments/assets/f9a91032-06f1-4f87-9886-84b8a8151845" />
 
 **Components**:
 - **KPI Cards**: Total companies (1,073), Avg valuation ($3.4B), Avg funding ($557M), Avg years (7.0)
@@ -303,8 +302,7 @@ ORDER BY Continent, Companies DESC;
 ---
 
 ### Dashboard 2: Funding Analysis
-![Funding Dashboard](<img width="1306" height="987" alt="Screenshot 2026-02-13 205908" src="https://github.com/user-attachments/assets/15a5f386-ee11-47af-a1a8-caa92415daf1" />
-)
+<img width="1260" height="952" alt="image" src="https://github.com/user-attachments/assets/6c4076eb-0c39-42c6-b418-22684926d8e9" />
 
 **Components**:
 - **Scatter Plot**: Funding vs Valuation with company labels
@@ -319,8 +317,7 @@ ORDER BY Continent, Companies DESC;
 ---
 
 ### Dashboard 3: Geographic Distribution
-![Geographic Dashboard](<img width="1184" height="961" alt="Screenshot 2026-02-13 194618" src="https://github.com/user-attachments/assets/ba09de39-726c-4636-941f-dc4c18bbe565" />
-)
+<img width="1184" height="961" alt="Screenshot 2026-02-13 194618" src="https://github.com/user-attachments/assets/ba09de39-726c-4636-941f-dc4c18bbe565" />
 
 **Components**:
 - **World Heat Map**: Geographic concentration visualization
