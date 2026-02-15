@@ -411,10 +411,9 @@ This analysis reveals five critical patterns in the billion-dollar startup lands
 
 ---
 
-## 📞 Connect
-
-**[Your Name]**  
-📧 Email: [your.email@example.com](mailto:knupoor08@gmail.com)  
-💻 GitHub: [github.com/yourusername](https://github.com/nupoork8)
+## Connect
+ 
+📧 Email: knupoor08@gmail.com
+💻 GitHub: nupoork8
 
 ---
