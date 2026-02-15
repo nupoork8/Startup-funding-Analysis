@@ -234,53 +234,6 @@ FROM Valuation_Tiers
 GROUP BY Tier, Tier_Rank
 ORDER BY Tier_Rank ASC;
 ```
-
----
-
-### 6. Temporal Trends
-
-**SQL Query**:
-```sql
-SELECT 
-    YEAR([Date_Joined]) AS Year, 
-    COUNT(*) AS New_Unicorns
-FROM Unicorn_Companies
-GROUP BY YEAR([Date_Joined])
-ORDER BY Year;
-```
-
-**Growth Timeline**:
-- **2007-2015**: Slow growth (1-35 unicorns/year)
-- **2016-2019**: Acceleration phase (44-108 unicorns/year)
-- **2020**: 108 new unicorns
-- **2021**: 519 new unicorns (48% of all-time total) 🚀
-- **2022**: 116 new unicorns (market correction/normalization)
-
-**Insight**: 2021 represented unprecedented unicorn creation driven by pandemic digital transformation and loose monetary policy.
-
----
-
-### 7. Regional Industry Specialization
-
-**SQL Query**:
-```sql
-SELECT 
-    Continent,
-    Industry,
-    COUNT(*) AS Companies
-FROM Unicorn_Companies
-GROUP BY Continent, Industry
-ORDER BY Continent, Companies DESC;
-```
-
-**Regional Strengths**:
-- **North America**: Diverse portfolio (Fintech, Internet Software, E-commerce)
-- **Asia**: AI specialization (65 companies), E-commerce (55 companies)
-- **Europe**: Fintech leadership (48 companies), Software (32 companies)
-- **South America**: E-commerce & Fintech focus (limited diversity)
-
-**Insight**: Regional specialization exists—countries benefit from leaning into existing strengths.
-
 ---
 
 ## 📊 Interactive Dashboards
