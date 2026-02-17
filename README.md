@@ -28,6 +28,8 @@ This project analyzes **1,074 unicorn companies** (startups valued at $1B+) from
 
 **Dataset Source**: [Kaggle - Unicorn Companies Dataset](https://www.kaggle.com/datasets/ramjasmaurya/unicorn-companies-dataset)
 
+<img width="1267" height="570" alt="image" src="https://github.com/user-attachments/assets/7e98330f-ef97-448c-8379-31440980c2bb" />
+
 ---
 
 ### Skills Demonstrated
